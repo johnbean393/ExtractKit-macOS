@@ -1,2 +1,86 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
+
+import Foundation
+
+public class ExtractKit {
+	
+	nonisolated(unsafe) static let shared: ExtractKit = ExtractKit()
+	
+	private var fileExtractors: [FileExtractor.Type] = [
+		CsvExtractor.self,
+		ExcelExtractor.self,
+		PdfExtractor.self,
+		PowerPointExtractor.self,
+		WordExtractor.self,
+		ImageExtractor.self
+	]
+	
+	public var supportedFileFormats: [String] {
+		var fileExtensions: [String] = []
+		let allExtractors: [FileExtractor.Type] = self.fileExtractors + [DefaultExtractor.self]
+		allExtractors.map({
+			$0.fileExtensions
+		}).forEach { extensions in
+			fileExtensions += extensions
+		}
+		return fileExtensions.sorted()
+	}
+	
+	/// Function to add a FileExtractor
+	public func addFileExtractor(_ fileExtractor: FileExtractor.Type) {
+		self.fileExtractors.append(fileExtractor)
+	}
+	
+	/// Function to extract text from common file types and documents
+	public func extractText(url: URL) async throws -> String {
+		if url.isWebURL {
+			// If is web url
+			return try await self.extractWebsiteText(url: url)
+		} else if url.isFileURL {
+			// Else, if file url
+			return try await self.extractFileText(url: url)
+		} else {
+			// Throw error
+			throw ExtractionError.invalidFileFormat
+		}
+	}
+	
+	/// Function to extract text from file
+	private func extractFileText(url: URL) async throws -> String {
+		// Check file extension
+		let fileExtension: String = url.pathExtension
+		// Match extension
+		for extractor in self.fileExtractors {
+			// If matched
+			if extractor.fileExtensions.contains(fileExtension) {
+				// Extract text
+				let fileExtractor: FileExtractor = extractor.init(
+					url: url
+				)
+				return try await fileExtractor.extractText()
+			}
+		}
+		// If not found, try default
+		let defaultExtractor: DefaultExtractor = DefaultExtractor(
+			url: url
+		)
+		do {
+			return try await defaultExtractor.extractText()
+		} catch {
+			throw ExtractionError.invalidFileFormat
+		}
+	}
+	
+	/// Function to extract text from website
+	private func extractWebsiteText(url: URL) async throws -> String {
+		let extractor: WebExtractor = WebsiteExtractor(url: url)
+		return try await extractor.extractText()
+	}
+	
+	public enum ExtractionError: Error {
+		case invalidURL
+		case invalidFileFormat
+	}
+	
+}
