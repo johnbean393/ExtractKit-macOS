@@ -5,7 +5,7 @@ import Foundation
 
 public class ExtractKit {
 	
-	nonisolated(unsafe) static let shared: ExtractKit = ExtractKit()
+	nonisolated(unsafe) public static let shared: ExtractKit = ExtractKit()
 	
 	private var fileExtractors: [FileExtractor.Type] = [
 		CsvExtractor.self,
