@@ -44,7 +44,7 @@ ExtractKit.shared.addFileExtractor(AudioExtractor)
 ## Installation
 
 **Requirements**
-- Xcode ≤ 15
+- Xcode ≥ 15
 
 **Swift Package Manager**
 ```
