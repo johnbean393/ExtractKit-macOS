@@ -23,6 +23,7 @@ enum TestSites: String {
 	case gitHub = "https://github.com/johnbean393"
 	case googleNews = "https://news.google.com/home?hl=en-US&gl=US&ceid=US:en"
 	case youtube = "https://youtube.com"
+	case markWittonBlog = "https://markwitton.co.uk"
 	
 	var url: URL {
 		return URL(string: self.rawValue)!
@@ -50,7 +51,7 @@ enum TestSites: String {
 }
 
 @Test func websiteTest() async throws {
-	let testSite: TestSites = .gitHub
+	let testSite: TestSites = .markWittonBlog
 	do {
 		let extractedText: String = try await ExtractKit.shared.extractText(
 			url: testSite.url
