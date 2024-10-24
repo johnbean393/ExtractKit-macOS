@@ -3,9 +3,9 @@
 
 import Foundation
 
-public class ExtractKit {
+public class ExtractKit: @unchecked Sendable {
 	
-	nonisolated(unsafe) public static let shared: ExtractKit = ExtractKit()
+	public static let shared: ExtractKit = ExtractKit()
 	
 	private var fileExtractors: [FileExtractor.Type] = [
 		CsvExtractor.self,
@@ -16,6 +16,7 @@ public class ExtractKit {
 		ImageExtractor.self
 	]
 	
+	/// Computed property returning the file extensions of all supported file formats
 	public var supportedFileFormats: [String] {
 		var fileExtensions: [String] = []
 		let allExtractors: [FileExtractor.Type] = self.fileExtractors + [DefaultExtractor.self]
