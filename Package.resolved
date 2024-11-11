@@ -7,7 +7,7 @@
       "location" : "https://github.com/johnbean393/BrowserKit/",
       "state" : {
         "branch" : "main",
-        "revision" : "2d20df8329f18f972fa486c936b617e15d1b4f57"
+        "revision" : "db18e1fc169c4edb43fc7b9e249e9bb1078438ff"
       }
     },
     {
@@ -15,7 +15,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vmanot/CorePersistence.git",
       "state" : {
-        "branch" : "main",
         "revision" : "38fd5271fa906a2d8395e4b42724142886a3c763"
       }
     },
@@ -43,16 +42,16 @@
       "location" : "https://github.com/vmanot/Merge.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e8bc37c8dc203cab481efedd71237c151882c007"
+        "revision" : "860e67569be17b3af64008d09e5ef06fd2256e4e"
       }
     },
     {
       "identity" : "networkkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/NetworkKit.git",
+      "location" : "https://github.com/johnbean393/NetworkKit.git",
       "state" : {
         "branch" : "master",
-        "revision" : "8daa1ba22e5d18e1b8e469d5a0dd0c58b675eb87"
+        "revision" : "242bab612d08105783a8dad7d6afd699b09ee0c3"
       }
     },
     {
@@ -61,7 +60,7 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "6227a1114e341daf54e90df61e173599b187a9b1"
+        "revision" : "481f2fa058a339ad4aebde1b798964ca4da08438"
       }
     },
     {
@@ -78,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-syntax.git",
       "state" : {
-        "revision" : "2bc86522d115234d1f588efe2bcb4ce4be8f8b82",
-        "version" : "510.0.3"
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
       }
     },
     {
