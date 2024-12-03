@@ -50,11 +50,13 @@ public class ExtractKit: @unchecked Sendable {
 	/// Function to extract text from file
 	private func extractFileText(url: URL) async throws -> String {
 		// Check file extension
-		let fileExtension: String = url.pathExtension
+		let fileExtension: String = url.pathExtension.lowercased()
 		// Match extension
 		for extractor in self.fileExtractors {
 			// If matched
-			if extractor.fileExtensions.contains(fileExtension) {
+			if extractor.fileExtensions.map({
+				$0.lowercased()
+			}).contains(fileExtension) {
 				// Extract text
 				let fileExtractor: FileExtractor = extractor.init(
 					url: url
