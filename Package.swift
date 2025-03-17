@@ -19,7 +19,7 @@ let package = Package(
 		.package(url: "https://github.com/johnbean393/BrowserKit/", branch: "main"),
 		.package(url: "https://github.com/scinfu/SwiftSoup", .upToNextMajor(from: "2.6.0")),
 		.package(url: "https://github.com/swiftcsv/SwiftCSV", .upToNextMajor(from: "0.10.0")),
-		.package(url: "https://github.com/CoreOffice/CoreXLSX.git", .upToNextMinor(from: "0.14.1"))
+		.package(url: "https://github.com/CoreOffice/CoreXLSX.git", .upToNextMinor(from: "0.14.1")),
 	],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

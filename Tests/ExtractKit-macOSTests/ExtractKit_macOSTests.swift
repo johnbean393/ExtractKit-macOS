@@ -10,10 +10,11 @@ enum TestFiles: String {
 	case pptx = "Test.pptx"
 	case pdf = "Test.pdf"
 	case png = "Test.png"
+	case emlx = "Test.emlx"
 	
 	var url: URL {
 		let testFilesDirUrl: URL = URL(
-			filePath: "/Users/bj/Library/Application Support/Magic Sorter/Sorted Land/Computer DN/Swift_Packages/ExtractKit-macOS/Tests/ExtractKit-macOSTests/Test Files/"
+			filePath: "/Users/bj/Library/Application Support/Magic Sorter/Sorted Land/Computer DN/Swift Packages/ExtractKit-macOS/Tests/ExtractKit-macOSTests/Test Files/"
 		)
 		return testFilesDirUrl.appendingPathComponent(self.rawValue)
 	}

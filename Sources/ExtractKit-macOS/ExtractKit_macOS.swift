@@ -13,7 +13,8 @@ public class ExtractKit: @unchecked Sendable {
 		PdfExtractor.self,
 		PowerPointExtractor.self,
 		WordExtractor.self,
-		ImageExtractor.self
+		ImageExtractor.self,
+		EmlxExtractor.self
 	]
 	
 	/// Computed property returning the file extensions of all supported file formats

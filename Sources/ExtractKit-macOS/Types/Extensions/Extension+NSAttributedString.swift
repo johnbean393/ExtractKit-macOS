@@ -8,30 +8,17 @@
 import AppKit
 import Foundation
 
-extension NSAttributedString{
+extension NSAttributedString {
 	
-//	var outerTables: [NSTextTable] {
-//		var index = 0
-//		let len = length
-//		var output:[NSTextTable] = []
-//		while index < len{
-//			if let tab = outerTable(at: index) {
-//				output.append(tab)
-//				index = range(of: tab, at: index).upperBound
-//			} else {
-//				index += 1
-//			}
-//		}
-//		return output
-//	}
-	
-	func paragraphStyle(at index:Int)->NSParagraphStyle?{
+	func paragraphStyle(at index: Int) -> NSParagraphStyle? {
 		let key = NSAttributedString.Key.paragraphStyle
-		return attribute(key, at: index, effectiveRange: nil) as! NSParagraphStyle?
+		return attribute(key, at: index, effectiveRange: nil) as? NSParagraphStyle
 	}
+	
 	func textBlocks(at index:Int)->[NSTextBlock]?{
 		return paragraphStyle(at: index)?.textBlocks
 	}
+	
 	func tables(at index:Int)->[NSTextTable]?{
 		guard let tbs = textBlocks(at: index) else{
 			return nil
