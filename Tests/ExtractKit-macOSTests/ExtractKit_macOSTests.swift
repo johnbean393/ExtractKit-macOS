@@ -40,7 +40,7 @@ enum TestSites: String {
 }
 
 @Test func fileTest() async throws {
-	let testFile: TestFiles = .xlsx
+	let testFile: TestFiles = .pdf
 	do {
 		let extractedText: String = try await ExtractKit.shared.extractText(
 			url: testFile.url

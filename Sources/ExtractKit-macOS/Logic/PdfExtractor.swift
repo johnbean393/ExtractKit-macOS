@@ -33,51 +33,64 @@ public class PdfExtractor: FileExtractor {
 			guard let page: PDFPage = pdf.page(at: pageIndex) else {
 				continue
 			}
-			guard let pageContent: NSAttributedString = page.attributedString else {
-				continue
-			}
-			// Check if text is reversed
-			if pageContent.string.components(separatedBy: " ,").count >= 3 || pageContent.string.components(separatedBy: " .").count >= 5 {
-				// If reversed, add reversed string
-				documentContent += pageContent.string.reduce("") { "\($1)" + $0 }
-			} else {
-				// If not reversed, add normal string
-                documentContent += pageContent
-			}
-            // Add new line
-            documentContent += "\n"
-            // Get image content
-            let images: [NSImage] = self.getPdfPageImage(page: page)
-            let texts: [String] = await images.asyncMap { image in
-                do {
-                    return try await ImageExtractor.extractNSImage(nsImage: image)
-                } catch {
-                    return nil
+            if let pageContent: NSAttributedString = page.attributedString {
+                // Check if text is reversed
+                if pageContent.string.components(separatedBy: " ,").count >= 3 || pageContent.string.components(separatedBy: " .").count >= 5 {
+                    // If reversed, add reversed string
+                    documentContent += pageContent.string.reduce("") { "\($1)" + $0 }
+                } else {
+                    // If not reversed, add normal string
+                    documentContent += pageContent
                 }
-            }.compactMap({ $0 })
-            let imagesText: String = texts.joined(separator: " ")
-            // Add to document content
-            documentContent += imagesText
-			// Add new line
-            documentContent += "\n"
+                // Add new line
+                documentContent += "\n"
+            }
+            // Get image content
+            if let images: [NSImage] = self.getPdfPageImage(page: page) {
+                print("Extracted \(images.count) images")
+                let texts = await withTaskGroup(
+                    of: String?.self,
+                    returning: [String].self
+                ) { group in
+                    for image in images {
+                        group.addTask {
+                            return try? await ImageExtractor.extractNSImage(
+                                nsImage: image
+                            )
+                        }
+                    }
+                    var texts: [String] = []
+                    for await result in group {
+                        if let result = result {
+                            texts.append(result)
+                        }
+                    }
+                    return texts
+                }
+                let imagesText: String = texts.joined(separator: " ")
+                // Add to document content
+                documentContent += imagesText
+                // Add new line
+                documentContent += "\n"
+            }
 		}
 		// Return text
 		return documentContent
 	}
     
     /// Function to get all images in the
-    private func getPdfPageImage(page: PDFPage) -> [NSImage] {
+    private func getPdfPageImage(page: PDFPage) -> [NSImage]? {
         // Get page in CoreGraphics format
         guard let cgPdfPage: CGPDFPage = page.pageRef, let dictionary = cgPdfPage.dictionary else {
-            return []
+            return nil
         }
         var res: CGPDFDictionaryRef?
         guard CGPDFDictionaryGetDictionary(dictionary, "Resources", &res), let resources = res else {
-            return []
+            return nil
         }
         var xObj: CGPDFDictionaryRef?
         guard CGPDFDictionaryGetDictionary(resources, "XObject", &xObj), let xObject = xObj else {
-            return []
+            return nil
         }
         // Enumerate all of the keys in 'dict', calling the block-function `block' once for each key/value pair.
         var imageKeys = [String]()
@@ -130,3 +143,5 @@ public class PdfExtractor: FileExtractor {
 	}
 	
 }
+
+extension NSImage: @unchecked @retroactive Sendable {}
