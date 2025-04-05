@@ -26,10 +26,7 @@ public class PowerPointExtractor: FileExtractor {
 		// Make UUID
 		let archiveId: UUID = UUID()
 		// Create temp directory
-		let appSupportDir: URL = FileManager.default.urls(
-			for: .applicationSupportDirectory,
-			in: .userDomainMask
-		).first!
+		let appSupportDir: URL = URL.applicationSupportDirectory
 		let tempDirectory: URL = appSupportDir
 			.appendingPathComponent(
 				"Cache"

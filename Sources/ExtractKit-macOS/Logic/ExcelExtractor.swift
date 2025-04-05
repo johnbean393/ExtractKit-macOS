@@ -63,10 +63,10 @@ public class ExcelExtractor: FileExtractor {
 		let array: [[String]] = data.rows.map({ row in
 			row.cells.map({ cell in
 				// If no shared values
-				if sharedStrings == nil {
-					return cell.value ?? ""
+				if let sharedStrings {
+					return cell.stringValue(sharedStrings) ?? ""
 				} else {
-					return cell.stringValue(sharedStrings!) ?? ""
+					return cell.value ?? ""
 				}
 			})
 		})

@@ -55,8 +55,8 @@ public class ExtractKit: @unchecked Sendable {
 		// Match extension
 		for extractor in self.fileExtractors {
 			// If matched
-			if extractor.fileExtensions.map({
-				$0.lowercased()
+			if extractor.fileExtensions.map({ `extension` in
+				`extension`.lowercased()
 			}).contains(fileExtension) {
 				// Extract text
 				let fileExtractor: FileExtractor = extractor.init(
