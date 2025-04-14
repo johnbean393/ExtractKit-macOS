@@ -11,7 +11,10 @@ import SwiftSoup
 
 public class EmlxExtractor: FileExtractor {
 	
-	public required init(url: URL) {
+	public required init(
+        url: URL,
+        speed: ExtractionSpeed = .default
+    ) {
 		self.url = url
 	}
 	

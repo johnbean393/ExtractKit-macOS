@@ -10,11 +10,16 @@ import PDFKit
 
 public class PdfExtractor: FileExtractor {
 	
-	public required init(url: URL) {
+	public required init(
+        url: URL,
+        speed: ExtractionSpeed = .default
+    ) {
 		self.url = url
+        self.speed = speed
 	}
 	
 	public var url: URL
+    public var speed: ExtractionSpeed
 	
 	public static let fileExtensions: [String] = [
 		"pdf"
@@ -45,8 +50,9 @@ public class PdfExtractor: FileExtractor {
                 // Add new line
                 documentContent += "\n"
             }
-            // Get image content
-            if let images: [NSImage] = self.getPdfPageImage(page: page) {
+            // Get image content if speed is default
+            if speed == .default,
+                let images: [NSImage] = self.getPdfPageImage(page: page) {
                 print("Extracted \(images.count) images")
                 let texts = await withTaskGroup(
                     of: String?.self,

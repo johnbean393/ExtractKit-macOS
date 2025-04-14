@@ -9,7 +9,7 @@ import Foundation
 
 public protocol TextExtractor {
 	
-	init(url: URL)
+    init(url: URL, speed: ExtractionSpeed)
 	
 	/// Property containing the URL of a file / website
 	var url: URL { get set }

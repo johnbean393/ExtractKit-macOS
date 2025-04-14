@@ -10,7 +10,10 @@ import FSKit_macOS
 
 public class PowerPointExtractor: FileExtractor {
 	
-	public required init(url: URL) {
+	public required init(
+        url: URL,
+        speed: ExtractionSpeed = .default
+    ) {
 		self.url = url
 	}
 	

@@ -35,13 +35,19 @@ public class ExtractKit: @unchecked Sendable {
 	}
 	
 	/// Function to extract text from common file types and documents
-	public func extractText(url: URL) async throws -> String {
+	public func extractText(
+        url: URL,
+        speed: ExtractionSpeed = .default
+    ) async throws -> String {
 		if url.isWebURL {
 			// If is web url
 			return try await self.extractWebsiteText(url: url)
 		} else if url.isFileURL {
 			// Else, if file url
-			return try await self.extractFileText(url: url)
+            return try await self.extractFileText(
+                url: url,
+                speed: speed
+            )
 		} else {
 			// Throw error
 			throw ExtractionError.invalidFileFormat
@@ -49,7 +55,10 @@ public class ExtractKit: @unchecked Sendable {
 	}
 	
 	/// Function to extract text from file
-	private func extractFileText(url: URL) async throws -> String {
+	private func extractFileText(
+        url: URL,
+        speed: ExtractionSpeed = .default
+    ) async throws -> String {
 		// Check file extension
 		let fileExtension: String = url.pathExtension.lowercased()
 		// Match extension
@@ -60,7 +69,8 @@ public class ExtractKit: @unchecked Sendable {
 			}).contains(fileExtension) {
 				// Extract text
 				let fileExtractor: FileExtractor = extractor.init(
-					url: url
+					url: url,
+                    speed: speed
 				)
 				return try await fileExtractor.extractText()
 			}
@@ -86,5 +96,10 @@ public class ExtractKit: @unchecked Sendable {
 		case invalidURL
 		case invalidFileFormat
 	}
-	
+    
+}
+
+public enum ExtractionSpeed {
+    case `default`
+    case fast
 }
