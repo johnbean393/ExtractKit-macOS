@@ -145,7 +145,16 @@ public class PdfExtractor: FileExtractor {
     }
 	
 	public enum PdfError: Error {
+        
 		case failedToReadFile
+        
+        var localizedDescription: String {
+            switch self {
+                case .failedToReadFile:
+                    return "Failed to read PDF file"
+            }
+        }
+        
 	}
 	
 }

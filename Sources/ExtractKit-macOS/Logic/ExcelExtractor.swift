@@ -78,7 +78,16 @@ public class ExcelExtractor: FileExtractor {
 	}
 	
 	public enum ExcelError: Error {
+        
 		case failedToReadFile
+        
+        var localizedDescription: String {
+            switch self {
+                case .failedToReadFile:
+                    return "Failed to read file"
+            }
+        }
+        
 	}
 	
 }

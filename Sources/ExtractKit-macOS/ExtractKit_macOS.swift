@@ -93,8 +93,19 @@ public class ExtractKit: @unchecked Sendable {
 	}
 	
 	public enum ExtractionError: Error {
+        
 		case invalidURL
 		case invalidFileFormat
+        
+        var localizedDesription: String {
+            switch self {
+            case .invalidURL:
+                return "Invalid URL"
+            case .invalidFileFormat:
+                return "Invalid file format"
+            }
+        }
+        
 	}
     
 }

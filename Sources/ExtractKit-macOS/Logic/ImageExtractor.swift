@@ -82,7 +82,16 @@ public class ImageExtractor: FileExtractor {
     }
 	
 	public enum ImageError: Error {
+        
 		case failedToReadFile
+        
+        var localizedDescription: String {
+            switch self {
+                case .failedToReadFile:
+                    return "Failed to read file"
+            }
+        }
+        
 	}
 	
 }
