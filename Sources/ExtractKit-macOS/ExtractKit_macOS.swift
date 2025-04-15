@@ -92,7 +92,7 @@ public class ExtractKit: @unchecked Sendable {
 		return try await extractor.extractText()
 	}
 	
-	public enum ExtractionError: Error {
+	public enum ExtractionError: LocalizedError {
         
 		case invalidURL
 		case invalidFileFormat

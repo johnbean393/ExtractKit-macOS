@@ -81,11 +81,11 @@ public class ImageExtractor: FileExtractor {
         return resultText
     }
 	
-	public enum ImageError: Error {
+	public enum ImageError: LocalizedError {
         
 		case failedToReadFile
         
-        var localizedDescription: String {
+        public var errorDescription: String? {
             switch self {
                 case .failedToReadFile:
                     return "Failed to read file"

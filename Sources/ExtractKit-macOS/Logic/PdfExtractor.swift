@@ -144,11 +144,11 @@ public class PdfExtractor: FileExtractor {
         return allPageImages
     }
 	
-	public enum PdfError: Error {
+	public enum PdfError: LocalizedError {
         
 		case failedToReadFile
         
-        var localizedDescription: String {
+        public var errorDescription: String? {
             switch self {
                 case .failedToReadFile:
                     return "Failed to read PDF file"

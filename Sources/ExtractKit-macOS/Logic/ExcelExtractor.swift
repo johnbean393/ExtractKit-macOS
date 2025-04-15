@@ -77,11 +77,11 @@ public class ExcelExtractor: FileExtractor {
 		return Table(data: array)
 	}
 	
-	public enum ExcelError: Error {
+	public enum ExcelError: LocalizedError {
         
 		case failedToReadFile
         
-        var localizedDescription: String {
+        public var errorDescription: String? {
             switch self {
                 case .failedToReadFile:
                     return "Failed to read file"

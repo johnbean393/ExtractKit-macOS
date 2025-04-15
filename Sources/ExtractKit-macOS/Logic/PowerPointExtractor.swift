@@ -80,11 +80,11 @@ cd "\(tempDirectory.posixPath)";unzip \"\(path)\"; cd ppt/slides; echo \"-<>-<>-
 		return output
 	}
 	
-	public enum PowerPointError: Error {
+	public enum PowerPointError: LocalizedError {
         
 		case failedToUnzipFile
         
-        var localizedDescription: String {
+        public var errorDescription: String? {
             switch self {
             case .failedToUnzipFile:
                 return "Failed to unzip PowerPoint file"
