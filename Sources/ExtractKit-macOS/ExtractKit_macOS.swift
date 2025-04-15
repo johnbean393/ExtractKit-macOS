@@ -37,12 +37,13 @@ public class ExtractKit: @unchecked Sendable {
 	/// Function to extract text from common file types and documents
 	public func extractText(
         url: URL,
+        contentType: ContentType? = nil,
         speed: ExtractionSpeed = .default
     ) async throws -> String {
-		if url.isWebURL {
-			// If is web url
-			return try await self.extractWebsiteText(url: url)
-		} else if url.isFileURL {
+        if url.isWebURL || contentType == .website {
+            // If is web url
+            return try await self.extractWebsiteText(url: url)
+        } else if url.isFileURL || contentType == .file {
 			// Else, if file url
             return try await self.extractFileText(
                 url: url,
@@ -92,6 +93,10 @@ public class ExtractKit: @unchecked Sendable {
 		return try await extractor.extractText()
 	}
 	
+    public enum ContentType {
+        case file, website
+    }
+    
 	public enum ExtractionError: LocalizedError {
         
 		case invalidURL
