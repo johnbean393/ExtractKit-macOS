@@ -97,7 +97,7 @@ public class ExtractKit: @unchecked Sendable {
         case file, website
     }
     
-	public enum ExtractionError: LocalizedError {
+    public enum ExtractionError: LocalizedError, @unchecked Sendable {
         
 		case invalidURL
 		case invalidFileFormat
