@@ -42,7 +42,7 @@
       "location" : "https://github.com/vmanot/Merge.git",
       "state" : {
         "branch" : "master",
-        "revision" : "860e67569be17b3af64008d09e5ef06fd2256e4e"
+        "revision" : "9f2b492513384f5cc26ce487b146723cef361d50"
       }
     },
     {
@@ -82,12 +82,30 @@
       }
     },
     {
+      "identity" : "swift-subprocess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/preternatural-fork/swift-subprocess.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b276db492c0a91ea319bf3774755c4e3e7af8082"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swift-precompiled/swift-syntax",
       "state" : {
         "branch" : "release/6.1",
         "revision" : "fc197a24fb2e77609fbe3d94624e36f84d758099"
+      }
+    },
+    {
+      "identity" : "swift-system",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-system",
+      "state" : {
+        "revision" : "41daa93a5d229e1548ec86ab527ce4783ca84dda",
+        "version" : "1.6.0"
       }
     },
     {
