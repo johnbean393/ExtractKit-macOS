@@ -1,13 +1,13 @@
 {
-  "originHash" : "2e881f82d5bd037d06a7ef97a88c244a7716a07f4e33a4bd8bf0cd2c8341af92",
+  "originHash" : "77ef4ded7dbccc147cc0025d70086d14bbf5d334e2137a39886dd90607a495ef",
   "pins" : [
     {
       "identity" : "browserkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/BrowserKit",
+      "location" : "https://github.com/johnbean393/BrowserKit/",
       "state" : {
         "branch" : "main",
-        "revision" : "2d20df8329f18f972fa486c936b617e15d1b4f57"
+        "revision" : "323215794c81baccacb700ccf96a41514dcf5131"
       }
     },
     {
@@ -15,8 +15,7 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vmanot/CorePersistence.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "28d77c8a63ce40b9f5098e5099a08b3b103ff562"
+        "revision" : "38fd5271fa906a2d8395e4b42724142886a3c763"
       }
     },
     {
@@ -34,7 +33,7 @@
       "location" : "https://github.com/johnbean393/FSKit-macOS",
       "state" : {
         "branch" : "main",
-        "revision" : "43aa4bbba40365ef085fc0e1a366485150b51911"
+        "revision" : "81509af68b02efb76a44d9daeeedf52e491a9db8"
       }
     },
     {
@@ -43,16 +42,16 @@
       "location" : "https://github.com/vmanot/Merge.git",
       "state" : {
         "branch" : "master",
-        "revision" : "05704dd42ebb76c06ed53faec3cba7cea3ac0be4"
+        "revision" : "9f2b492513384f5cc26ce487b146723cef361d50"
       }
     },
     {
       "identity" : "networkkit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vmanot/NetworkKit.git",
+      "location" : "https://github.com/johnbean393/NetworkKit.git",
       "state" : {
         "branch" : "master",
-        "revision" : "5eb6e13df2298423b10dd70109ede58cbce6dde3"
+        "revision" : "d2f7bec630d4248282c4e7c34b0f6fefaa405bd6"
       }
     },
     {
@@ -61,7 +60,16 @@
       "location" : "https://github.com/vmanot/Swallow.git",
       "state" : {
         "branch" : "master",
-        "revision" : "be7d0eff0e4b1605268e88d48126b476f0623a7a"
+        "revision" : "685a3ddfe700105557cf28e9df08a2ea315e5868"
+      }
+    },
+    {
+      "identity" : "swift-atomics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-atomics.git",
+      "state" : {
+        "revision" : "b601256eab081c0f92f059e12818ac1d4f178ff7",
+        "version" : "1.3.0"
       }
     },
     {
@@ -74,12 +82,30 @@
       }
     },
     {
+      "identity" : "swift-subprocess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/preternatural-fork/swift-subprocess.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b276db492c0a91ea319bf3774755c4e3e7af8082"
+      }
+    },
+    {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
+      "location" : "https://github.com/swift-precompiled/swift-syntax",
       "state" : {
-        "revision" : "2bc86522d115234d1f588efe2bcb4ce4be8f8b82",
-        "version" : "510.0.3"
+        "branch" : "release/6.1",
+        "revision" : "fc197a24fb2e77609fbe3d94624e36f84d758099"
+      }
+    },
+    {
+      "identity" : "swift-system",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-system",
+      "state" : {
+        "revision" : "41daa93a5d229e1548ec86ab527ce4783ca84dda",
+        "version" : "1.6.0"
       }
     },
     {
@@ -115,7 +141,7 @@
       "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
       "state" : {
         "branch" : "master",
-        "revision" : "622694ec05fa098989a6a158bc6fc73aee80c169"
+        "revision" : "836fc284a9bb07fc9ab6d2dce6ebd0e32aabde26"
       }
     },
     {
