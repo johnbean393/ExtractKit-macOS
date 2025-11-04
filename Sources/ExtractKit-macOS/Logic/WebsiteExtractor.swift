@@ -10,9 +10,9 @@ import SwiftSoup
 
 public class WebsiteExtractor: FileExtractor {
     
-    public init(
+    public required init(
         url: URL,
-        extractionSpeed: ExtractionSpeed = .default
+        speed extractionSpeed: ExtractionSpeed = .default
     ) {
         self.url = url
     }
