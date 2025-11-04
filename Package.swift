@@ -27,7 +27,6 @@ let package = Package(
             name: "ExtractKit-macOS",
 			dependencies: [
 				.product(name: "FSKit-macOS", package: "FSKit-macOS"),
-				.product(name: "BrowserKit", package: "BrowserKit"),
 				.product(name: "SwiftSoup", package: "SwiftSoup"),
 				.product(name: "SwiftCSV", package: "SwiftCSV"),
 				.product(name: "CoreXLSX", package: "CoreXLSX"),
