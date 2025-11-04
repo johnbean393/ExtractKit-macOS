@@ -45,7 +45,7 @@ public class PdfExtractor: FileExtractor {
                     documentContent += pageContent.string.reduce("") { "\($1)" + $0 }
                 } else {
                     // If not reversed, add normal string
-                    documentContent += pageContent
+                    documentContent += pageContent.string
                 }
                 // Add new line
                 documentContent += "\n"

@@ -8,11 +8,11 @@
 import Foundation
 import SwiftSoup
 
-public class WebsiteExtractor: FileExtractor {
+public class WebsiteExtractor: WebExtractor {
     
     public required init(
         url: URL,
-        speed extractionSpeed: ExtractionSpeed = .default
+        speed: ExtractionSpeed = .default
     ) {
         self.url = url
     }
